@@ -1,1 +1,71 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'ngx-toastr/toastr';
+
+$toastr-padding: 12px;
+$toastr-border-radius: 6px;
+$toastr-font-size: 14px;
+$toastr-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+$toastr-success: #28a745;
+$toastr-error: #dc3545;
+$toastr-warning: #ffc107;
+$toastr-info: #17a2b8;
+$toastr-text: #17a2b8;
+
+@keyframes toastrSlideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toastrSlideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+
+.toast-container {
+  top: 20px !important;
+  right: 20px !important;
+}
+
+.toast {
+  padding: $toastr-padding;
+  border-radius: $toastr-border-radius;
+  font-size: $toastr-font-size;
+  box-shadow: $toastr-box-shadow;
+  color: $toastr-text;
+  animation: toastrSlideIn 0.5s ease-out;
+
+  &-success {
+    background-color: $toastr-success !important;
+  }
+
+  &-error {
+    background-color: $toastr-error !important;
+  }
+
+  &-warning {
+    background-color: $toastr-warning !important;
+    color: #212529 !important;
+  }
+
+  &-info {
+    background-color: $toastr-info !important;
+  }
+
+  &.toast-fade-out {
+    animation: toastrSlideOut 0.5s ease-in forwards;
+  }
+}

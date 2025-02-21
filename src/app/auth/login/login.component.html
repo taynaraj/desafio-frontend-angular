@@ -1,0 +1,9 @@
+<div class="login">
+  <h2>Olá, entre com seu usuário!</h2>
+  <form (ngSubmit)="sbmtLogin()">
+    <input type="text" name="username" [(ngModel)]="username" placeholder="Usuário" required>
+    <input type="password" name="password" [(ngModel)]="password" placeholder="Senha" required>
+    <button class="btn-default" type="submit">Entrar</button>
+  </form>
+
+</div>
