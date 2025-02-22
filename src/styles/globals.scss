@@ -1,0 +1,62 @@
+@use 'variables';
+
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.events {
+  padding: 20px;
+
+  h2 {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.event-card {
+  display: flex;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  align-items: center;
+  gap: 15px;
+
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  .status {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .ativo {
+    background-color: #28a745;
+    color: white;
+  }
+
+  .inativo {
+    background-color: #dc3545;
+    color: white;
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+
+    button {
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+  }
+}

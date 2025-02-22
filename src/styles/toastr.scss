@@ -1,0 +1,61 @@
+@use './variables' as v;
+
+@keyframes toastrSlideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toastrSlideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+
+.toast-container {
+  top: 20px !important;
+  right: 20px !important;
+}
+
+.toast {
+  padding: v.$toastr-padding;
+  border-radius: v.$toastr-border-radius;
+  font-size: v.$toastr-font-size;
+  box-shadow: v.$toastr-box-shadow;
+  color: v.$toastr-text;
+  animation: toastrSlideIn 0.5s ease-out;
+
+  &-success {
+    background-color: v.$toastr-success !important;
+  }
+
+  &-error {
+    background-color: v.$toastr-error !important;
+  }
+
+  &-warning {
+    background-color: v.$toastr-warning !important;
+    color: #212529 !important;
+  }
+
+  &-info {
+    background-color: v.$toastr-info !important;
+  }
+
+  &.toast-fade-out {
+    animation: toastrSlideOut 0.5s ease-in forwards;
+  }
+}

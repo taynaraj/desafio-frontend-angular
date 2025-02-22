@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
@@ -8,6 +6,7 @@ import { AuthService } from '../auth.service';
   selector: 'app-login',
   standalone: true,
   imports: [FormsModule],
+  providers: [],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -15,7 +14,9 @@ export class LoginComponent {
   username = '';
   password = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {
+    console.log('LoginComponent carregado!');
+  }
   sbmtLogin() {
     this.authService.login(this.username, this.password);
   }
