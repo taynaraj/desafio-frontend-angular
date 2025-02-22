@@ -7,19 +7,16 @@ import { Event } from './event.module';
   providedIn: 'root',
 })
 export class EventsService {
-  private eventsUrl = 'assets/data/eventos.json';
-  private events: Event[] = [];
+  private eventsUrl = 'http://localhost:3000/events';
+
 
   constructor(private http: HttpClient) {}
 
-  getEvents(): Observable<{ events: Event[] }> {
-    if (this.events.length) {
-      return of({ events: this.events });
-    }
-    return this.http.get<{ events: Event[] }>(this.eventsUrl);
+  getEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(this.eventsUrl);
+  }
+  deleteEvent(eventId: number): Observable<void> {
+    return this.http.delete<void>(`${this.eventsUrl}/${eventId}`);
   }
 
-  updateEvents(updatedEvents: Event[]) {
-    this.events = updatedEvents;
-  }
 }

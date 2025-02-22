@@ -1,21 +1,29 @@
-<div class="events container">
-  <h2><i class="fa-solid fa-calendar"></i> Eventos</h2>
-
-  <div *ngIf="events.length > 0; else noEvents" class="event-list row">
-    <div *ngFor="let event of events" class="col-lg-3 col-md-4 col-sm-6 col-12">
+<div class="page-header">
+  <h2><i class="fa-solid fa-ticket"></i> Eventos</h2>
+</div>
+<div class="events container-fluid">
+  <div *ngIf="events.length > 0; else noEvents" class="row">
+    <div *ngFor="let event of events" class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
       <div class="event-card">
-        <img [src]="event.image" [alt]="event.title">
+        <img [src]="event.image" [alt]="event.title" />
         <div class="event-info">
           <span class="status" [class.ativo]="event.status === 'ativo'" [class.inativo]="event.status === 'inativo'">
-            {{ event.status === 'ativo' ? 'Evento Ativo' : 'Evento Inativo' }}
+            {{ event.status === "ativo" ? "Evento Ativo" : "Evento Inativo" }}
           </span>
           <h3>{{ event.title }}</h3>
           <p>{{ event.description }}</p>
-          <p><strong>Publicado em:</strong> {{ event.publicationDate | date:'dd/MM/yyyy HH:mm' }}</p>
+          <p>
+            <strong>Publicado em:</strong>
+            {{ event.publicationDate | date : "dd/MM/yyyy HH:mm" }}
+          </p>
         </div>
         <div class="actions">
-          <button (click)="editEvent(event.id)"><i class="fa-solid fa-pen"></i></button>
-          <button (click)="confirmDelete(event.id, event.title)"><i class="fa-solid fa-trash"></i></button>
+          <button (click)="editEvent(event.id)">
+            <i class="fa-solid fa-pen"></i>
+          </button>
+          <button (click)="confirmDelete(event.id, event.title)">
+            <i class="fa-solid fa-trash"></i>
+          </button>
         </div>
       </div>
     </div>

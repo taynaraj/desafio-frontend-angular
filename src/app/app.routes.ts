@@ -10,11 +10,11 @@ const userLogged = () => {
   console.log('Verificando autenticação...');
 
   if (authService.isAuthenticated()) {
-    console.log('Usuário autenticado! Permitindo acesso.');
+    console.log('Usuário logado.');
     return true; 
   } else {
-    console.log('Usuário não autenticado. Redirecionando para login...');
-    setTimeout(() => router.navigate(['/login']), 0); // Evita erro de navegação
+    console.log('Não logou');
+    router.navigate(['/login']);
     return false;
   }
 };

@@ -20,15 +20,21 @@ export class EventsComponent implements OnInit {
   private router = inject(Router);
 
   ngOnInit() {
-    console.log('EventsComponent carregado!');
+    console.log('Acesso Events');
     this.loadEvents();
   }
 
   loadEvents() {
-    this.eventsService.getEvents().subscribe((data) => {
-      this.events = data.events;
-    });
+    this.eventsService.getEvents().subscribe(
+      (data) => {
+        this.events = data; 
+      },
+      (error) => {
+        console.error('Erro ao carregar eventos:', error);
+      }
+    );
   }
+  
 
   editEvent(eventId: number) {
     this.router.navigate([`/event/${eventId}`]);
@@ -44,8 +50,16 @@ export class EventsComponent implements OnInit {
   }
 
   deleteEvent(eventId: number) {
-    this.events = this.events.filter((event) => event.id !== eventId);
-    this.eventsService.updateEvents(this.events);
-    this.toastr.success('Evento excluído com sucesso!');
+    this.eventsService.deleteEvent(eventId).subscribe(
+      () => {
+        console.log(`Evento com ID ${eventId} excluído com sucesso.`);
+        this.loadEvents();
+        this.toastr.success('Evento excluído com sucesso!');
+      },
+      (error) => {
+        console.error('Erro ao excluir evento:', error);
+      this.toastr.error('Erro ao excluir evento!', 'Erro');
+      }
+    );
   }
 }

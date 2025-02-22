@@ -14,9 +14,7 @@ export class LoginComponent {
   username = '';
   password = '';
 
-  constructor(private authService: AuthService) {
-    console.log('LoginComponent carregado!');
-  }
+  constructor(private authService: AuthService) { }
   sbmtLogin() {
     this.authService.login(this.username, this.password);
   }

@@ -9,13 +9,11 @@
     margin-bottom: 20px;
   }
 
-  .event-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-  }
-
   .event-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%; 
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
@@ -29,7 +27,7 @@
 
     img {
       width: 100%;
-      height: 160px;
+      height: 180px;
       object-fit: cover;
     }
 
@@ -38,6 +36,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      flex-grow: 1;
 
       h3 {
         font-size: 18px;

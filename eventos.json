@@ -1,0 +1,36 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "title": "O significado dos principais nomes da bíblia",
+      "description": "Descrição detalhada do evento.",
+      "status": "ativo",
+      "publicationDate": "2023-10-01",
+      "image": "assets/images/evento1.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Como ouvir a voz de Deus?",
+      "description": "Descrição detalhada do evento.",
+      "status": "inativo",
+      "publicationDate": "2023-10-03",
+      "image": "assets/images/evento3.jpg"
+    },
+    {
+      "id": "4",
+      "title": "Como ouvir a voz de Deus?",
+      "description": "Descrição detalhada do evento.",
+      "status": "inativo",
+      "publicationDate": "2023-10-04",
+      "image": "assets/images/evento1.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Como ouvir a voz de Deus?",
+      "description": "Descrição detalhada do evento.",
+      "status": "inativo",
+      "publicationDate": "2023-10-05",
+      "image": "assets/images/evento2.jpg"
+    }
+  ]
+}

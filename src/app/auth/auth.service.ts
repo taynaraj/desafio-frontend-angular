@@ -24,7 +24,7 @@ export class AuthService {
         `Bem-vindo(a), ${user.username}!`,
         'Login realizado com sucesso'
       );
-      setTimeout(() => this.router.navigate(['/events']), 0);
+      this.router.navigate(['/events']);
       return true;
     } else {
       this.toastr.error('Usuário ou senha incorretos.', 'Erro no login');
