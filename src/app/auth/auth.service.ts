@@ -34,13 +34,13 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('user');
-    this.toastr.info('Logout realizado com sucesso.');
+    this.toastr.info('Logout.');
     this.router.navigate(['/login']);
   }
 
   isAuthenticated(): boolean {
     const user = localStorage.getItem('user');
-    console.log('isAuthenticated chamado. Usuário encontrado:', user);
+    console.log(user);
     return user !== null;
   }
 }

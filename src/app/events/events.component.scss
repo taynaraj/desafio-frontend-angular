@@ -1,14 +1,16 @@
+@use './variables' as v;
+
 .events {
   padding: 20px;
 
-  h2 {
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
+  .row{
+    margin-left: -1.8rem;
+    margin-right: -1.8rem;
+    
+    .event-col{
+      margin-bottom: 20px;
+    }
   }
-
   .event-card {
     display: flex;
     flex-direction: column;
@@ -25,11 +27,35 @@
       transform: translateY(-5px);
     }
 
-    img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
+    .event-thumb{
+      position: relative;
+      img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+      .status {
+        display: inline-block;
+        padding: 5px 15px;
+        font-size: 12px;
+        font-weight: bold;
+        position: relative;
+        top:-5px;
+        left: 5px;
+        border-radius:8px;
+
+        &.ativo {
+          background-color: #007bff;
+          color: white;
+        }
+
+        &.inativo {
+          background-color: #c1c1c1;
+          color: white;
+        }
+      }
     }
+    
 
     .event-info {
       padding: 15px;
@@ -38,10 +64,16 @@
       gap: 10px;
       flex-grow: 1;
 
+      .event-footer{
+        display: flex;
+      }
+
       h3 {
-        font-size: 18px;
+        font-size: 15px;
         font-weight: bold;
+        color: v.$text-titles;
         margin: 0;
+        min-height: 35px;
       }
 
       p {
@@ -49,32 +81,21 @@
         color: #555;
         margin: 0;
       }
-
-      .status {
-        display: inline-block;
-        padding: 5px 10px;
-        border-radius: 5px;
-        font-size: 12px;
-        font-weight: bold;
-        text-transform: uppercase;
-
-        &.ativo {
-          background-color: #28a745;
-          color: white;
+      .event-date{
+        strong{
+          color: v.$green-primary;
+          width: 100%;
+          display: inline-block;
         }
-
-        &.inativo {
-          background-color: #dc3545;
-          color: white;
+        span{
+          color:v.$text-secundary;
         }
       }
+      
     }
 
     .actions {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 15px;
-      border-top: 1px solid #eee;
+      padding: 10px 0 0 15px;
 
       button {
         background: none;
@@ -89,11 +110,11 @@
       }
 
       .fa-trash {
-        color: #dc3545;
+        color: v.$color-icon
       }
 
       .fa-pen {
-        color: #007bff;
+        color: v.$color-icon
       }
     }
   }

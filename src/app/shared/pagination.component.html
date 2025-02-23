@@ -1,0 +1,21 @@
+<div class="pagination-container">
+  <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
+    <i class="fa-solid fa-caret-left"></i>
+  </button>
+
+  <span *ngFor="let page of [].constructor(getTotalPages()); let i = index">
+    <button
+      (click)="goToPage(i + 1)"
+      [class.active]="currentPage === i + 1"
+    >
+      {{ i + 1 }}
+    </button>
+  </span>
+
+  <button
+    (click)="goToPage(currentPage + 1)"
+    [disabled]="currentPage === getTotalPages()"
+  >
+    <i class="fa-solid fa-caret-right"></i>
+  </button>
+</div>

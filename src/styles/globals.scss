@@ -1,28 +1,73 @@
-@use 'variables';
+@use './variables' as v;
 
-// Fonte Regular
-@font-face {
-  font-family: 'Involve';
-  src: url('./fonts/involve-regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-// Fonte Medium
-@font-face {
-  font-family: 'Involve';
-  src: url('./fonts/Involve-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-// Fonte SemiBold
-@font-face {
-  font-family: 'Involve';
-  src: url('./fonts/Involve-SemiBold.woff') format('woff');
-  font-weight: 600;
-  font-style: normal;
-}
 
 body {
-  font-family: Involve, sans-serif;
+  font-family: Roboto, sans-serif !important;
+  background-color: v.$background !important;
+}
+
+.icon {
+  color: v.$color-icon;
+}
+
+.page-body {
+  padding: 10px 10px;
+}
+
+.page-header {
+  background-color: #fff;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 10px;
+
+  h2 {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    color: v.$text-titles;
+    margin-bottom: 0;
+  }
+
+  .icon {
+    margin-right: 10px;
+  }
+}
+
+//Paginação
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+
+  button {
+    border: 0;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    font-size: 12px;
+    cursor: pointer;
+    color: v.$text-titles;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: v.$green-primary;
+      color: white;
+    }
+
+    &.active {
+      background: v.$green-primary;
+      color: white;
+      font-weight: bold;
+    }
+
+    &:disabled {
+      background: #f8f9fa;
+      color: #ccc;
+      cursor: not-allowed;
+    }
+  }
 }

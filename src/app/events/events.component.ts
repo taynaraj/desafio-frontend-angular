@@ -4,16 +4,22 @@ import { Router } from '@angular/router';
 import { EventsService } from '../services/events.service';
 import { ToastrService } from 'ngx-toastr';
 import { Event } from '../services/event.module';
+import { PaginationComponent } from '../shared/pagination.component';
 
 @Component({
   selector: 'app-events',
   standalone: true,
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss'],
-  imports: [CommonModule],
+  imports: [CommonModule, PaginationComponent],
 })
 export class EventsComponent implements OnInit {
   events: Event[] = [];
+
+  //Paginação
+  currentPage = 1;
+  itemsPerPage = 6;
+  totalItems = 0;
 
   private eventsService = inject(EventsService);
   private toastr = inject(ToastrService);
@@ -27,13 +33,18 @@ export class EventsComponent implements OnInit {
   loadEvents() {
     this.eventsService.getEvents().subscribe(
       (data) => {
-        this.events = data; 
+        this.totalItems = data.length; 
+        this.events = data.slice(
+          (this.currentPage - 1) * this.itemsPerPage,
+          this.currentPage * this.itemsPerPage
+        );
       },
       (error) => {
         console.error('Erro ao carregar eventos:', error);
       }
     );
   }
+  
   
 
   editEvent(eventId: number) {
@@ -61,5 +72,10 @@ export class EventsComponent implements OnInit {
       this.toastr.error('Erro ao excluir evento!', 'Erro');
       }
     );
+  }
+
+  changePage(page: number) {
+    this.currentPage = page;
+    this.loadEvents();
   }
 }
