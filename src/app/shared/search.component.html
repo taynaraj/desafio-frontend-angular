@@ -1,9 +1,10 @@
-<div class="search-box">
+<div class="input-group">
   <input
     type="text"
+    class="form-control"
     [(ngModel)]="searchText"
     (input)="onSearchChange()"
-    placeholder="Buscar eventos..."
+    placeholder="Buscar eventos"
   />
-  <i class="fa-solid fa-search"></i>
+  <i class="icon fa-solid fa-search input-group-text"></i>
 </div>

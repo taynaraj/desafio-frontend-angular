@@ -39,20 +39,20 @@
   animation: toastrSlideIn 0.5s ease-out;
 
   &-success {
-    background-color: v.$toastr-success !important;
+    background-color: v.$toastr-success;
   }
 
   &-error {
-    background-color: v.$toastr-error !important;
+    background-color: v.$toastr-error;
   }
 
   &-warning {
-    background-color: v.$toastr-warning !important;
-    color: #212529 !important;
+    background-color: v.$toastr-warning;
+    color: #212529;
   }
 
   &-info {
-    background-color: v.$toastr-info !important;
+    background-color: v.$toastr-info;
   }
 
   &.toast-fade-out {

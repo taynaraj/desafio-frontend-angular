@@ -1,7 +1,7 @@
 <div class="page-body">
   <div class="page-header">
     <h2><i class="icon fa-solid fa-ticket"></i> Eventos</h2>
-    <app-search (searchChange)="onSearchChange($event)"></app-search>
+    <app-search (searchChange)="onSearchChange($event)" class="search-event"></app-search>
   </div>
   <div class="events container-fluid">
     <div *ngIf="events.length > 0; else noEvents" class="row">
@@ -12,6 +12,7 @@
         <div class="event-card">
           <div class="event-thumb">
             <img [src]="event.image" [alt]="event.title" />
+            
             <span
               class="status"
               [class.ativo]="event.status === 'ativo'"
@@ -22,6 +23,7 @@
           </div>
           <div class="event-info">
             <h3>{{ event.title }}</h3>
+            <p class="event-description">{{event.description | truncate: 100}}</p>
             <div class="event-footer">
               <p class="event-date">
                 <strong>Publicado em</strong>

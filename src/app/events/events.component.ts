@@ -6,13 +6,14 @@ import { ToastrService } from 'ngx-toastr';
 import { Event } from '../services/event.module';
 import { PaginationComponent } from '../shared/pagination.component';
 import { SearchComponent } from '../shared/search.component';
+import { TruncatePipe } from "../shared/truncate.pipe";
 
 @Component({
   selector: 'app-events',
   standalone: true,
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss'],
-  imports: [CommonModule, PaginationComponent, SearchComponent],
+  imports: [CommonModule, PaginationComponent, SearchComponent, TruncatePipe],
 })
 export class EventsComponent implements OnInit {
   events: Event[] = []; //muda o estado conforme paginação e filtro

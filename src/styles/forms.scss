@@ -1,4 +1,4 @@
-@use './variables' as v;
+@use "./variables" as v;
 
 .btn-primary {
   background-color: v.$green-primary;
@@ -7,4 +7,47 @@
   text-align: center;
   font-size: 14px;
   padding: 20px 30px;
+}
+
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-group {
+
+
+  .form-control {
+
+    &[type="text"],
+    &[type="email"],
+    &[type="password"] {
+      padding: 10px;
+      border: 1px solid v.$border-color;
+      border-radius: v.$border-radius-form;
+      font-size: 12px;
+
+      &:focus {
+        outline: none;
+        border-color: v.$green-primary;
+        box-shadow: 0 0 5px rgba(v.$green-primary, 0.5);
+      }
+
+      &.erro {
+        border-color: v.$color-erro;
+        box-shadow: 0 0 5px rgba(v.$color-erro, 0.5);
+      }
+    }
+  }
+
+  .icon {
+    color: v.$color-icon;
+  }
+
+  .input-group-text {
+    background-color: transparent;
+    border-color: v.$border-color;
+    line-height: revert;
+  }
 }

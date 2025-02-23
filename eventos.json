@@ -3,7 +3,7 @@
     {
       "id": "1",
       "title": "O significado dos principais nomes da bíblia",
-      "description": "Descrição detalhada do evento.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam convallis ex metus, ut consequat odio dignissim et. Nunc mollis malesuada libero sed feugiat. Aliquam tristique malesuada sapien, sed ornare justo laoreet vel. Fusce at volutpat purus. Aliquam odio risus, ultrices ac turpis sed, rhoncus interdum arcu. Vestibulum quis libero ligula. Praesent pretium purus nulla, luctus elementum lorem rhoncus id..",
       "status": "ativo",
       "publicationDate": "2023-10-01",
       "image": "assets/images/evento1.jpg"
@@ -11,7 +11,7 @@
     {
       "id": "3",
       "title": "Como ouvir a voz de Deus?",
-      "description": "Descrição detalhada do evento.",
+      "description": "Vivamus ultrices turpis in mattis interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean tellus dui, commodo id ligula ut, condimentum fringilla erat. Nullam dapibus sed lorem eu fringilla. Sed ac ligula nisl. Proin volutpat, justo accumsan viverra elementum, lorem enim vehicula massa, congue consectetur velit lectus at metus. Curabitur sit amet lorem sed lorem sollicitudin bibendum et ac ex. Donec mattis sit amet turpis vitae semper. Phasellus ante nulla, eleifend sagittis egestas a, cursus nec ante.",
       "status": "inativo",
       "publicationDate": "2023-10-03",
       "image": "assets/images/evento3.jpg"
@@ -19,7 +19,7 @@
     {
       "id": "4",
       "title": "Como ouvir a voz de Deus?",
-      "description": "Descrição detalhada do evento.",
+      "description": "Mauris eu risus nisl. Maecenas in vulputate quam, eu fringilla libero. Nam bibendum iaculis enim convallis suscipit. Donec nec pharetra est. Mauris efficitur enim in erat consequat, ac imperdiet enim varius. Phasellus dapibus, tellus vitae blandit dapibus, elit nibh euismod turpis, ac dictum justo metus quis ante. Proin dapibus justo non urna tristique cursus. Phasellus sed imperdiet orci. Aenean sapien turpis, lacinia sit amet mattis eget, pellentesque et orci. ",
       "status": "inativo",
       "publicationDate": "2023-10-04",
       "image": "assets/images/evento1.jpg"
@@ -27,7 +27,7 @@
     {
       "id": "5",
       "title": "Como ouvir a voz de Deus?",
-      "description": "Descrição detalhada do evento.",
+      "description": "Proin molestie blandit lacus sed tempor. Proin bibendum lectus eget diam tincidunt, tincidunt aliquet ligula auctor. Nullam sit amet neque iaculis, consectetur neque ut, dictum felis. Duis pellentesque ipsum diam. Etiam eget leo in nibh porta ultricies. Sed posuere, lectus facilisis ultrices rutrum, nisl nisi tempor dui, nec tristique ligula felis id quam. Aenean semper suscipit tempor.",
       "status": "inativo",
       "publicationDate": "2023-10-05",
       "image": "assets/images/evento2.jpg"
