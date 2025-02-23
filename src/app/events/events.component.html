@@ -1,6 +1,7 @@
 <div class="page-body">
   <div class="page-header">
     <h2><i class="icon fa-solid fa-ticket"></i> Eventos</h2>
+    <app-search (searchChange)="onSearchChange($event)"></app-search>
   </div>
   <div class="events container-fluid">
     <div *ngIf="events.length > 0; else noEvents" class="row">

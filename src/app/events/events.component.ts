@@ -5,18 +5,23 @@ import { EventsService } from '../services/events.service';
 import { ToastrService } from 'ngx-toastr';
 import { Event } from '../services/event.module';
 import { PaginationComponent } from '../shared/pagination.component';
+import { SearchComponent } from '../shared/search.component';
 
 @Component({
   selector: 'app-events',
   standalone: true,
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss'],
-  imports: [CommonModule, PaginationComponent],
+  imports: [CommonModule, PaginationComponent, SearchComponent],
 })
 export class EventsComponent implements OnInit {
-  events: Event[] = [];
+  events: Event[] = []; //muda o estado conforme paginação e filtro
+  allEvents: Event[] = [];
 
-  //Paginação
+  //Search
+  searchQuery = '';
+
+  //Pagination
   currentPage = 1;
   itemsPerPage = 6;
   totalItems = 0;
@@ -33,11 +38,8 @@ export class EventsComponent implements OnInit {
   loadEvents() {
     this.eventsService.getEvents().subscribe(
       (data) => {
-        this.totalItems = data.length; 
-        this.events = data.slice(
-          (this.currentPage - 1) * this.itemsPerPage,
-          this.currentPage * this.itemsPerPage
-        );
+        this.allEvents = data;
+        this.applyFilter();
       },
       (error) => {
         console.error('Erro ao carregar eventos:', error);
@@ -45,7 +47,26 @@ export class EventsComponent implements OnInit {
     );
   }
   
+  applyFilter() {
+    let filteredEvents = this.allEvents;
+
+    if (this.searchQuery.length >= 3) {
+      filteredEvents = this.allEvents.filter((event) =>
+        event.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+
+    this.totalItems = filteredEvents.length;
+    this.events = filteredEvents.slice(
+      (this.currentPage - 1) * this.itemsPerPage,
+      this.currentPage * this.itemsPerPage
+    );
+  }
   
+  onSearchChange(searchValue: string) {
+    this.searchQuery = searchValue;
+    this.applyFilter();
+  }
 
   editEvent(eventId: number) {
     this.router.navigate([`/event/${eventId}`]);
@@ -76,6 +97,6 @@ export class EventsComponent implements OnInit {
 
   changePage(page: number) {
     this.currentPage = page;
-    this.loadEvents();
+    this.applyFilter();
   }
 }

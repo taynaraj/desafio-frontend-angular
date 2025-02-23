@@ -35,7 +35,7 @@ body {
   }
 }
 
-//Paginação
+//Pagination
 .pagination-container {
   display: flex;
   justify-content: center;
@@ -71,3 +71,28 @@ body {
     }
   }
 }
+
+//Search
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 5px 10px;
+  background: #fff;
+  width: 300px;
+
+  input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+  }
+
+  i {
+    color: #666;
+    cursor: pointer;
+  }
+}
+
