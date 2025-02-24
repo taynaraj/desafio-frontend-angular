@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { EventsService } from '../services/events.service';
 import { ToastrService } from 'ngx-toastr';
-import { Event } from '../services/event.module';
+import { EventModel } from '../services/event.module';
 import { PaginationComponent } from '../shared/pagination.component';
 import { SearchComponent } from '../shared/search.component';
-import { TruncatePipe } from "../shared/truncate.pipe";
+import { TruncatePipe } from '../shared/truncate.pipe';
 
 @Component({
   selector: 'app-events',
@@ -16,13 +16,12 @@ import { TruncatePipe } from "../shared/truncate.pipe";
   imports: [CommonModule, PaginationComponent, SearchComponent, TruncatePipe],
 })
 export class EventsComponent implements OnInit {
-  events: Event[] = []; //muda o estado conforme paginação e filtro
-  allEvents: Event[] = [];
-
-  //Search
+  events: EventModel[] = []; //muda o estado conforme paginação e filtro
+  allEvents: EventModel[] = [];
+  isTableView = false;
   searchQuery = '';
 
-  //Pagination
+  //Config Pagination
   currentPage = 1;
   itemsPerPage = 6;
   totalItems = 0;
@@ -47,7 +46,7 @@ export class EventsComponent implements OnInit {
       }
     );
   }
-  
+
   applyFilter() {
     let filteredEvents = this.allEvents;
 
@@ -63,14 +62,14 @@ export class EventsComponent implements OnInit {
       this.currentPage * this.itemsPerPage
     );
   }
-  
+
   onSearchChange(searchValue: string) {
     this.searchQuery = searchValue;
     this.applyFilter();
   }
 
   editEvent(eventId: number) {
-    this.router.navigate([`/event/${eventId}`]);
+    this.router.navigate([`/event/edit/${eventId}`])
   }
 
   confirmDelete(eventId: number, eventTitle: string) {
@@ -91,7 +90,7 @@ export class EventsComponent implements OnInit {
       },
       (error) => {
         console.error('Erro ao excluir evento:', error);
-      this.toastr.error('Erro ao excluir evento!', 'Erro');
+        this.toastr.error('Erro ao excluir evento!', 'Erro');
       }
     );
   }
@@ -99,5 +98,9 @@ export class EventsComponent implements OnInit {
   changePage(page: number) {
     this.currentPage = page;
     this.applyFilter();
+  }
+
+  toggleView() {
+    this.isTableView = !this.isTableView;
   }
 }

@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
   selector: 'app-pagination',
   standalone: true,
   templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.scss'],
   imports: [CommonModule],
 })
 export class PaginationComponent {

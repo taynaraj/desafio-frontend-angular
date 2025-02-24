@@ -28,7 +28,7 @@ label {
       border-radius: v.$border-radius-form;
       font-size: 12px;
 
-      &:focus {
+      &:focus,&:focus-visible {
         outline: none;
         border-color: v.$green-primary;
         box-shadow: 0 0 5px rgba(v.$green-primary, 0.5);

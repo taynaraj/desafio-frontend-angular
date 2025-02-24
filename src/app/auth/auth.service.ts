@@ -7,8 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AuthService {
   private users = [
-    { username: 'admin', password: '1234', role: 'admin' },
-    { username: 'taynara', password: '4321', role: 'default' },
+    { username: 'admin', password: '1234', role: 'admin', avatar: 'assets/images/avatar.png' },
+    { username: 'taynara', password: '4321', role: 'default', avatar: 'assets/images/avatar.png' },
   ];
 
   constructor(private router: Router, private toastr: ToastrService) {}
@@ -40,7 +40,12 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     const user = localStorage.getItem('user');
-    console.log(user);
     return user !== null;
   }
+  
+  getUserData() {
+    const storedUser = localStorage.getItem('user');
+  return storedUser ? JSON.parse(storedUser) : null;
+  }
+  
 }

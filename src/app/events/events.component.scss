@@ -1,21 +1,22 @@
-@use './variables' as v;
+@use "./variables" as v;
 
 .events {
   padding: 20px;
 
-  .row{
+  .row {
     margin-left: -1.8rem;
     margin-right: -1.8rem;
-    
-    .event-col{
+
+    .event-col {
       margin-bottom: 20px;
     }
   }
+
   .event-card {
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 100%; 
+    width: 100%;
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
@@ -27,22 +28,24 @@
       transform: translateY(-5px);
     }
 
-    .event-thumb{
+    .event-thumb {
       position: relative;
+
       img {
         width: 100%;
         height: 180px;
         object-fit: cover;
       }
+
       .status {
         display: inline-block;
         padding: 5px 15px;
         font-size: 12px;
         font-weight: bold;
         position: relative;
-        top:-5px;
+        top: -5px;
         left: 5px;
-        border-radius:8px;
+        border-radius: 8px;
 
         &.ativo {
           background-color: #007bff;
@@ -55,7 +58,6 @@
         }
       }
     }
-    
 
     .event-info {
       padding: 15px;
@@ -64,7 +66,7 @@
       gap: 10px;
       flex-grow: 1;
 
-      .event-footer{
+      .event-footer {
         display: flex;
       }
 
@@ -80,24 +82,28 @@
         color: #555;
         margin: 0;
       }
-      .event-date{
-        strong{
+
+      .event-date {
+        strong {
           color: v.$green-primary;
           width: 100%;
           display: inline-block;
         }
-        span{
-          color:v.$text-secundary;
+
+        span {
+          color: v.$text-secundary;
         }
       }
-      .event-description{
-        font-size:12px;
+
+      .event-description {
+        font-size: 12px;
       }
-      
     }
 
     .actions {
       padding: 10px 0 0 15px;
+      display: flex;
+      gap: 20px;
 
       button {
         background: none;
@@ -112,17 +118,116 @@
       }
 
       .fa-trash {
-        color: v.$color-icon
+        color: v.$color-icon;
       }
 
       .fa-pen {
-        color: v.$color-icon
+        color: v.$color-icon;
       }
     }
   }
 }
-.page-header{
-  .search-event{
+
+.page-header {
+  .search-event {
     width: 300px;
+  }
+}
+
+.mode-view {
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-end;
+
+  a {
+    display: flex;
+    align-items: center;
+    color: v.$color-icon;
+    text-decoration: none;
+    font-size: 14px;
+    gap: 5px;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    .icon {
+      font-size: 16px;
+    }
+  }
+}
+
+.table-responsive {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+table.table-striped {
+
+  // Th Evento
+  th:nth-child(1) {
+    width: 25%;
+    padding-left: 15px;
+  }
+
+  // Td Imagem
+  td:nth-child(1) {
+    width: 5%;
+    padding-left: 15px;
+  }
+
+  // Td Evento
+  td:nth-child(2) {
+    width: 20%;
+  }
+
+  // Th e Td Descrição
+  th:nth-child(2),
+  td:nth-child(3) {
+    width: 35%;
+  }
+
+  // Th de Status
+  th:nth-child(3) {
+    width: 10%;
+  }
+
+  //Td Status
+  td:nth-child(4) {
+    width: 10%;
+  }
+
+  // Th e td Publicado
+  th:nth-child(4),
+  td:nth-child(5) {
+    width: 10%;
+  }
+
+  // Th e td Ações
+  th:nth-child(5),
+  td:nth-child(6) {
+    width: 10%;
+    text-align: center;
+  }
+
+  td {
+    border-bottom: 0;
+  }
+
+  .actions {
+    text-align: center;
+
+    .fa-pen {
+      margin-right: 15px;
+    }
+  }
+
+  .ativo {
+    color: #007bff;
+
+  }
+
+  .inativo {
+    color: #c1c1c1;
+
   }
 }

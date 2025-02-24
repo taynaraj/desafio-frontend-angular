@@ -1,0 +1,11 @@
+<header class="app-header">
+  <img src="assets/images/inchurch-logo-svg.svg" alt="Logo InChurch" class="logo">
+
+  <div class="user-info">
+    <img *ngIf="user?.avatar" [src]="user.avatar" alt="Avatar" class="avatar">
+    <span>{{ user?.username }}</span>
+    <button class="logout-btn" (click)="logout()">
+      <i class="icon fa-solid fa-arrow-right-from-bracket"></i> Sair
+    </button>
+  </div>
+</header>

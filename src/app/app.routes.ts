@@ -2,18 +2,16 @@ import { Routes } from '@angular/router';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth/auth.service';
+import { LoggedComponent } from './shared/layouts/logged.component';
 
 const userLogged = () => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  console.log('Verificando autenticação...');
-
   if (authService.isAuthenticated()) {
     console.log('Usuário logado.');
-    return true; 
+    return true;
   } else {
-    console.log('Não logou');
     router.navigate(['/login']);
     return false;
   }
@@ -21,11 +19,28 @@ const userLogged = () => {
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', loadComponent: () => import('./auth/login/login.component').then(m => m.LoginComponent) },
+
   {
-    path: 'events',
+    path: 'login',
     loadComponent: () =>
-      import('./events/events.component').then(m => m.EventsComponent),
+      import('./auth/login/login.component').then((m) => m.LoginComponent),
+  },
+
+  {
+    path: '',
+    component: LoggedComponent, 
     canActivate: [userLogged],
+    children: [
+      {
+        path: 'events',
+        loadComponent: () =>
+          import('./events/events.component').then((m) => m.EventsComponent),
+      },
+      {
+        path: 'event/edit/:id',
+        loadComponent: () =>
+          import('./events/edit-event.component').then((m) => m.EditEventComponent),
+      },
+    ],
   },
 ];
