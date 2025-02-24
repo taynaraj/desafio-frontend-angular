@@ -81,3 +81,7 @@ Bootstrap 5
 JSON Server (API Fake)
 Ngx-Toastr (Notificações)
 Font Awesome (Ícones)
+
+🎥 ** Vídeo de Pequena Demo do Sistema**
+
+https://www.loom.com/share/27fc5d6786a644caaac4bd599d75c955?sid=03d5d0ec-326a-47af-80c7-b5dc85d916a0
