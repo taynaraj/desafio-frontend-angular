@@ -7,11 +7,13 @@ Projeto desenvolvido com **Angular** para gerenciamento de eventos, incluindo li
 ## 🚀 Como rodar o projeto localmente
 
 ### 1️⃣ Clonar o repositório
+
 Abra o terminal e execute:
 
-```sh
+````sh
 git clone https://github.com/taynaraj/desafio-frontend-angular.git
 cd desafio-frontend-angular
+``
 
 ### 2️⃣ Instalar as dependências
 Antes de iniciar o projeto, instale as dependências necessárias:
@@ -19,6 +21,7 @@ Antes de iniciar o projeto, instale as dependências necessárias:
 ```sh
 
 npm install
+``
 
 ### 3️⃣ Iniciar o servidor Angular
 Para rodar o frontend, utilize o seguinte comando:
@@ -26,6 +29,7 @@ Para rodar o frontend, utilize o seguinte comando:
 ```sh
 
 ng serve
+``
 
 ## A aplicação estará disponível em:
 🔗 http://localhost:4200
@@ -36,6 +40,7 @@ O projeto usa JSON Server para simular uma API. Para inicializá-la, execute:
 ```sh
 
 json-server --watch eventos.json --port 3000
+``
 
 ### A API estará disponível em:
 🔗 http://localhost:3000/events
@@ -70,3 +75,4 @@ Bootstrap 5
 JSON Server (API Fake)
 Ngx-Toastr (Notificações)
 Font Awesome (Ícones)
+````
