@@ -1,59 +1,72 @@
-# DesafioFrontendAngular
+# 🎨 Desafio Frontend Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.2.
+Projeto desenvolvido com **Angular** para gerenciamento de eventos, incluindo listagem, edição e exclusão de eventos, além de autenticação de usuários.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Como rodar o projeto localmente
 
-```bash
+### 1️⃣ Clonar o repositório
+Abra o terminal e execute:
+
+```sh
+git clone https://github.com/taynaraj/desafio-frontend-angular.git
+cd desafio-frontend-angular
+
+### 2️⃣ Instalar as dependências
+Antes de iniciar o projeto, instale as dependências necessárias:
+
+```sh
+
+npm install
+
+### 3️⃣ Iniciar o servidor Angular
+Para rodar o frontend, utilize o seguinte comando:
+
+```sh
+
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## A aplicação estará disponível em:
+🔗 http://localhost:4200
 
-## Code scaffolding
+🔌 **Rodar a API Fake (JSON Server)**
+O projeto usa JSON Server para simular uma API. Para inicializá-la, execute:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+```sh
 
-```bash
-ng generate component component-name
-```
+json-server --watch eventos.json --port 3000
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### A API estará disponível em:
+🔗 http://localhost:3000/events
 
-```bash
-ng generate --help
-```
+🔑 **Autenticação**
+Para acessar a aplicação, utilize as seguintes credenciais no login:
 
-## Building
+Usuário: admin
+Senha: 1234
 
-To build the project run:
+📂 **Estrutura do Projeto**
 
-```bash
-ng build
-```
+📁 src/
+ ┣ 📁 app/
+ ┃ ┣ 📁 auth/               # Autenticação (Login)
+ ┃ ┣ 📁 events/             # Listagem e edição de eventos
+ ┃ ┣ 📁 services/           # Comunicação com API Fake
+ ┃ ┣ 📁 shared/             # Componentes reutilizáveis (Header, Layout)
+ ┃ ┣ 📁 styles/             # Estilos globais
+ ┃ ┣ 📄 app.routes.ts       # Rotas da aplicação
+ ┃ ┣ 📄 app.component.ts    # Componente raiz
+ ┃ ┗ ...
+ ┣ 📄 index.html            # Página inicial
+ ┣ 📄 styles.scss           # Estilos globais
+ ┗ ...
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+🛠 **Tecnologias Utilizadas**
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Angular
+TypeScript
+Bootstrap 5
+JSON Server (API Fake)
+Ngx-Toastr (Notificações)
+Font Awesome (Ícones)
