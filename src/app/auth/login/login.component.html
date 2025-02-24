@@ -1,6 +1,8 @@
 <div class="login">
-  <h2>Olá, entre com seu usuário!</h2>
+  <img src="assets/images/inchurch-logo-svg.svg" alt="Logo InChurch" class="logo">
+  
   <form (ngSubmit)="sbmtLogin()">
+    <h2>Login</h2>
     <input type="text" name="username" [(ngModel)]="username" placeholder="Usuário" required>
     <input type="password" name="password" [(ngModel)]="password" placeholder="Senha" required>
     <button class="btn-default" type="submit">Entrar</button>

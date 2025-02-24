@@ -1,0 +1,70 @@
+@use "../styles/variables" as v;
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #f5f7fa;
+
+  .logo {
+    width: 180px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 24px;
+    color: v.$text-titles;
+    margin-bottom: 20px;
+  }
+
+  form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid v.$border-color;
+      border-radius: v.$border-radius-form;
+      font-size: 14px;
+
+      &:focus {
+        outline: none;
+        border-color: v.$green-primary;
+        box-shadow: 0 0 5px rgba(v.$green-primary, 0.5);
+      }
+    }
+
+    .btn-default {
+      background: v.$green-primary;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      text-align: center;
+
+      &:hover {
+        background: darken(v.$green-primary, 10%);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    form {
+      width: 100%;
+      padding: 20px;
+      border-radius: 0;
+    }
+  }
+}
