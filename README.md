@@ -57,6 +57,7 @@ Senha: 1234
 
 📂 **Estrutura do Projeto**
 
+```sh
 📁 src/
 ┣ 📁 app/
 ┃ ┣ 📁 auth/ # Autenticação (Login)
@@ -70,6 +71,7 @@ Senha: 1234
 ┣ 📄 index.html # Página inicial
 ┣ 📄 styles.scss # Estilos globais
 ┗ ...
+```
 
 🛠 **Tecnologias Utilizadas**
 
@@ -79,7 +81,3 @@ Bootstrap 5
 JSON Server (API Fake)
 Ngx-Toastr (Notificações)
 Font Awesome (Ícones)
-
-```
-
-```
