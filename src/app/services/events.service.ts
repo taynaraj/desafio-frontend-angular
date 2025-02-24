@@ -7,6 +7,9 @@ import { EventModel } from './event.module';
   providedIn: 'root',
 })
 export class EventsService {
+  API_URL(API_URL: any) {
+    throw new Error('Method not implemented.');
+  }
   private eventsUrl = 'http://localhost:3000/events';
 
   constructor(private http: HttpClient) {}
