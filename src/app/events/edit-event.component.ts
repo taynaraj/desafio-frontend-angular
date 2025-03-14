@@ -5,6 +5,7 @@ import { EventsService } from '../services/events.service';
 import { ToastrService } from 'ngx-toastr';
 import { EventModel } from '../services/event.module';
 import { FormsModule } from '@angular/forms';
+import { BehaviorSubject, Observable, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-edit-event',
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule],
 })
 export class EditEventComponent implements OnInit {
-  event!: EventModel;
+  private eventSubject = new BehaviorSubject<EventModel | null>(null);
+  event$: Observable<EventModel | null> = this.eventSubject.asObservable();
   isLoading = true;
   selectedImage: File | null = null;
   imagePreview: string | null = null;
@@ -27,7 +29,6 @@ export class EditEventComponent implements OnInit {
 
   ngOnInit() {
     const eventId = this.route.snapshot.paramMap.get('id');
-
     if (eventId) {
       this.loadEvent(eventId);
     } else {
@@ -37,16 +38,18 @@ export class EditEventComponent implements OnInit {
   }
 
   loadEvent(eventId: string) {
-    this.eventsService.getEventById(eventId).subscribe(
-      (data) => {
-        this.event = data;
+    this.event$ = this.eventsService.getEventById(eventId).pipe(
+      tap((data) => {
+        this.eventSubject.next(data);
         this.imagePreview = data.image;
         this.isLoading = false;
-      },
-      (error) => {
-        this.toastr.error('Erro ao carregar evento.');
-        this.router.navigate(['/events']);
-      }
+      }),
+      tap({
+        error: () => {
+          this.toastr.error('Erro ao carregar evento.');
+          this.router.navigate(['/events']);
+        },
+      })
     );
   }
 
@@ -57,32 +60,32 @@ export class EditEventComponent implements OnInit {
       const reader = new FileReader();
 
       reader.onload = () => {
-        this.event.image = reader.result as string;
+        this.eventSubject.next({ ...(this.eventSubject.value as EventModel), image: reader.result as string });
         this.imagePreview = reader.result as string;
         this.cdr.detectChanges();
-        console.log('Imagem atualizada', this.event.image);
       };
 
-      reader.readAsDataURL(file); // Converte para Base64
+      reader.readAsDataURL(file);
     }
   }
 
   saveEvent() {
-    if (!this.event.title || !this.event.description || !this.event.dateEvent) {
+    if (!this.eventSubject.value?.title || !this.eventSubject.value?.description || !this.eventSubject.value?.dateEvent) {
       this.toastr.error('Todos os campos são obrigatórios.');
       return;
     }
 
-    this.eventsService.updateEvent(this.event).subscribe(
-      () => {
-        console.log('evento editado', this.event);
+    this.eventsService.updateEvent(this.eventSubject.value!).pipe(
+      tap(() => {
         this.toastr.success('Evento salvo com sucesso!');
         this.router.navigate(['/events']);
-      },
-      (error) => {
-        this.toastr.error('Erro ao salvar evento.');
-      }
-    );
+      }),
+      tap({
+        error: () => {
+          this.toastr.error('Erro ao salvar evento.');
+        },
+      })
+    ).subscribe();
   }
 
   goBack() {

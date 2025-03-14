@@ -7,6 +7,7 @@ import { EventModel } from '../services/event.module';
 import { PaginationComponent } from '../shared/pagination.component';
 import { SearchComponent } from '../shared/search.component';
 import { TruncatePipe } from '../shared/truncate.pipe';
+import { BehaviorSubject, Observable, map, tap } from 'rxjs';
 
 @Component({
   selector: 'app-events',
@@ -16,15 +17,14 @@ import { TruncatePipe } from '../shared/truncate.pipe';
   imports: [CommonModule, PaginationComponent, SearchComponent, TruncatePipe],
 })
 export class EventsComponent implements OnInit {
-  events: EventModel[] = []; //muda o estado conforme paginação e filtro
-  allEvents: EventModel[] = [];
+  private reload$ = new BehaviorSubject<void>(undefined);
+  events$!: Observable<EventModel[]>; 
   isTableView = false;
   searchQuery = '';
 
-  //Config Pagination
+  //Config Page
   currentPage = 1;
   itemsPerPage = 6;
-  totalItems = 0;
 
   private eventsService = inject(EventsService);
   private toastr = inject(ToastrService);
@@ -36,40 +36,22 @@ export class EventsComponent implements OnInit {
   }
 
   loadEvents() {
-    this.eventsService.getEvents().subscribe(
-      (data) => {
-        this.allEvents = data;
-        this.applyFilter();
-      },
-      (error) => {
-        console.error('Erro ao carregar eventos:', error);
-      }
-    );
-  }
-
-  applyFilter() {
-    let filteredEvents = this.allEvents;
-
-    if (this.searchQuery.length >= 3) {
-      filteredEvents = this.allEvents.filter((event) =>
-        event.title.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
-    }
-
-    this.totalItems = filteredEvents.length;
-    this.events = filteredEvents.slice(
-      (this.currentPage - 1) * this.itemsPerPage,
-      this.currentPage * this.itemsPerPage
+    this.events$ = this.eventsService.getEvents().pipe(
+      map((events) =>
+        events.filter((event) =>
+          event.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+        ).slice((this.currentPage - 1) * this.itemsPerPage, this.currentPage * this.itemsPerPage)
+      )
     );
   }
 
   onSearchChange(searchValue: string) {
     this.searchQuery = searchValue;
-    this.applyFilter();
+    this.loadEvents(); 
   }
 
   editEvent(eventId: number) {
-    this.router.navigate([`/event/edit/${eventId}`])
+    this.router.navigate([`/event/edit/${eventId}`]);
   }
 
   confirmDelete(eventId: number, eventTitle: string) {
@@ -82,22 +64,23 @@ export class EventsComponent implements OnInit {
   }
 
   deleteEvent(eventId: number) {
-    this.eventsService.deleteEvent(eventId).subscribe(
-      () => {
-        console.log(`Evento com ID ${eventId} excluído com sucesso.`);
-        this.loadEvents();
+    this.eventsService.deleteEvent(eventId).pipe(
+      tap(() => {
+        this.loadEvents(); 
         this.toastr.success('Evento excluído com sucesso!');
-      },
-      (error) => {
-        console.error('Erro ao excluir evento:', error);
-        this.toastr.error('Erro ao excluir evento!', 'Erro');
-      }
-    );
+        this.reload$.next();
+      }),
+      tap({
+        error: (error) => {
+          this.toastr.error('Erro ao excluir evento!', 'Erro');
+        }
+      })
+    ).subscribe();
   }
 
   changePage(page: number) {
     this.currentPage = page;
-    this.applyFilter();
+    this.loadEvents();
   }
 
   toggleView() {

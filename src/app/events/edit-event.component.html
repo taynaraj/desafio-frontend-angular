@@ -4,64 +4,65 @@
   </div>
 
   <div class="container">
-    <div *ngIf="isLoading" class="loading">Carregando...</div>
+    <ng-container *ngIf="event$ | async as event">
 
-    <form *ngIf="!isLoading" (ngSubmit)="saveEvent()" class="edit-form">
-      <div class="row">
-        <!-- Imagem -->
-        <div class="col-md-12 image-preview">
-          <img *ngIf="event.image" [src]="event.image" alt="Imagem do evento" class="img-fluid">
-          <input type="file" (change)="onFileChange($event)">
-        </div>
+      <div *ngIf="isLoading" class="loading">Carregando...</div>
 
-        <!-- Título -->
-        <div class="col-md-6 col-12">
-          <label for="title">Título</label>
-          <input type="text" id="title" [(ngModel)]="event.title" name="title" required>
-        </div>
+      <form *ngIf="!isLoading" (ngSubmit)="saveEvent()" class="edit-form">
+        <div class="row">
+          <!-- Imagem -->
+          <div class="col-md-12 image-preview">
+            <img *ngIf="event.image" [src]="event.image" alt="Imagem do evento" class="img-fluid">
+            <input type="file" (change)="onFileChange($event)">
+          </div>
 
-        <!-- Data do Evento -->
-        <div class="col-md-3 col-12">
-          <label for="dateEvent">Data do Evento</label>
-          <input type="date" id="dateEvent" [(ngModel)]="event.dateEvent" name="dateEvent" required>
-        </div>
+          <!-- Título -->
+          <div class="col-md-6 col-12">
+            <label for="title">Título</label>
+            <input type="text" id="title" [(ngModel)]="event.title" name="title" required>
+          </div>
 
-        <!-- Status -->
-        <div class="col-md-3 col-12 status-box">
-          <label>Status</label>
-          <div>
-            <input type="radio" id="ativo" name="status" value="ativo" [(ngModel)]="event.status">
-            <label for="ativo">Ativo</label>
+          <!-- Data do Evento -->
+          <div class="col-md-3 col-12">
+            <label for="dateEvent">Data do Evento</label>
+            <input type="date" id="dateEvent" [(ngModel)]="event.dateEvent" name="dateEvent" required>
+          </div>
 
-            <input type="radio" id="inativo" name="status" value="inativo" [(ngModel)]="event.status">
-            <label for="inativo">Inativo</label>
+          <!-- Status -->
+          <div class="col-md-3 col-12 status-box">
+            <label>Status</label>
+            <div>
+              <input type="radio" id="ativo" name="status" value="ativo" [(ngModel)]="event.status">
+              <label for="ativo">Ativo</label>
+
+              <input type="radio" id="inativo" name="status" value="inativo" [(ngModel)]="event.status">
+              <label for="inativo">Inativo</label>
+            </div>
+          </div>
+
+          <!-- Descrição -->
+          <div class="col-md-12">
+            <label for="description">Descrição</label>
+            <textarea id="description" [(ngModel)]="event.description" name="description" rows="4" required></textarea>
+          </div>
+
+          <!-- Publicado em -->
+          <div class="col-md-12">
+            <p class="publication-date">
+              <strong>Publicado em:</strong> {{ event.publicationDate | date:'dd/MM/yyyy HH:mm' }}
+            </p>
           </div>
         </div>
 
-
-
-        <!-- Descrição -->
-        <div class="col-md-12">
-          <label for="description">Descrição</label>
-          <textarea id="description" [(ngModel)]="event.description" name="description" rows="4" required></textarea>
+        <!-- Botões -->
+        <div class="row footer-buttons">
+          <div class="col-md-12 button-group">
+            <button type="button" class="btn btn-back" (click)="goBack()">Voltar</button>
+            <button type="submit" class="btn btn-save">Salvar</button>
+          </div>
         </div>
+      </form>
 
-
-
-        <!-- Publicado em -->
-        <div class="col-md-12">
-          <p class="publication-date"><strong>Publicado em:</strong> {{ event.publicationDate | date:'dd/MM/yyyy HH:mm'
-            }}</p>
-        </div>
-
-      </div>
-      <!-- Botões -->
-      <div class="row footer-buttons">
-        <div class="col-md-12 button-group">
-          <button type="button" class="btn btn-back" (click)="goBack()">Voltar</button>
-          <button type="submit" class="btn btn-save">Salvar</button>
-        </div>
-      </div>
-    </form>
+    </ng-container>
   </div>
 </div>
